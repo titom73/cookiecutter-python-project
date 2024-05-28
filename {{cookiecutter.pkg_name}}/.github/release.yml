@@ -1,0 +1,41 @@
+changelog:
+  exclude:
+    labels:
+      - 'rn: test(helpers)'
+      - 'rn: ci(helpers)'
+      - 'rn: test(helpers.tests)'
+      - 'rn: ci(helpers.tests)'
+      - 'rn: test(helpers.cli)'
+      - 'rn: ci(helpers.cli)'
+      - 'rn: test'
+      - 'rn: ci'
+  categories:
+    - title: Breaking Changes
+      labels:
+        - 'rn: feat(helpers)!'
+        - 'rn: fix(helpers)!'
+        - 'rn: cut(helpers)!'
+        - 'rn: revert(helpers)!'
+        - 'rn: refactor(helpers)!'
+        - 'rn: bump(helpers)!'
+        - 'rn: feat!'
+        - 'rn: fix!'
+        - 'rn: cut!'
+        - 'rn: revert!'
+        - 'rn: refactor!'
+        - 'rn: bump!'
+    - title: New features and enhancements
+      labels:
+        - 'rn: feat(helpers)'
+        - 'rn: feat'
+    - title: Fixed issues
+      labels:
+        - 'rn: fix(helpers)'
+        - 'rn: fix'
+    - title: Documentation
+      labels:
+        - 'rn: doc(helpers)'
+        - 'rn: doc'
+    - title: Other Changes
+      labels:
+        - '*'
