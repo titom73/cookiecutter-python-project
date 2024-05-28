@@ -27,4 +27,4 @@ Contributions are welcome. Please refer to the [contribution guide](./CONTRIBUTI
 
 ## Licence
 
-The project is published under [{{cookiecutter.open_source_license}}](./LICENSE)
+The project is published under [{{cookiecutter.open_source_license}}](./LICENCE)

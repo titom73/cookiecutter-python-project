@@ -59,4 +59,4 @@ Contributions are welcome. Please refer to the [contribution guide](./CONTRIBUTI
 
 ## Licence
 
-The project is published under [Apache-2.0](./LICENSE)
+The project is published under [Apache-2.0](./LICENCE)
