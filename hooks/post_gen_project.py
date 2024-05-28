@@ -31,6 +31,10 @@ if __name__ == "__main__":
         remove_dir(".github/workflows")
         print("GH actions removed")
 
+    if "{{cookiecutter.include_drone_ci}}" != "y":
+        remove_file(".drone.yml")
+        print("Drone CI removed")
+
     if "{{cookiecutter.dockerfile}}" != "y":
         remove_file("Dockerfile")
         print("Deockerfile removed")

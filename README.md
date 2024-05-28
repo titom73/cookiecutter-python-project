@@ -7,9 +7,10 @@ Git repository to easily generate structure for a Python 3 project with the foll
 - `pyproject.toml` for python packaging
 - `Ruff`, `Pylint`, `Mypy` configurations
 - `tox` configurations
-- `pre-commit` hook configured (not installed)
+- `pre-commit` hook configuration (__not installed__: run `pre-commit install`)
 - `Dockerfile` for easy packaging
 - GH actions for standard CI.
+- [Drone CI](https://www.drone.io/) for homelab CI.
 - Devcontainer and VScode settings
 - Licence selection
 
@@ -35,17 +36,22 @@ This project uses following inputs to build content:
 - `author_github_handle`: Git Nickname,
 - `git_server`: Git server,
 - `project_name`: Project's name (similar to repository name),
-- `project_slug`: `{{cookiecutter.project_name|lower|replace('-', '_')}}`,
-- `pkg_name`: `{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}`,
+- `pkg_name`: default is `{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}`,
 - `project_description`: Project description,
 - `version`: Initial version of the project,
-- `include_github_actions`: Activate or no GH Actions,
-- `publish_to`: Where to publish package (not in use),
-- `codecov`: Activate or no Codecov,
-- `dockerfile`: Activate or no Dockerfile,
-- `devcontainer`: Activate or no Devcontainer,
+- `include_github_actions`: Activate or not GH Actions,
+- `include_drone_ci`: Activate or not [Drone-CI](https://www.drone.io/)
+- `codecov`: Activate or not Codecov,
+- `dockerfile`: Activate or not Dockerfile,
+- `devcontainer`: Activate or not Devcontainer,
 - `open_source_license`: Project's licence type,
-- `year`: `{% now 'utc', '%Y' %}`,
+
+### Hidden variables
+
+Some variables are automatically built by cookicutter:
+
+- `__project_slug`: `{{cookiecutter.project_name|lower|replace('-', '_')}}`,
+- `__year`: `{% now 'utc', '%Y' %}`,
 
 ## Contribution guide
 

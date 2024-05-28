@@ -12,10 +12,9 @@
     "y",
     "n"
   ],
-  "publish_to": [
-    "pypi",
-    "artifactory",
-    "none"
+  "include_drone_ci": [
+    "y",
+    "n"
   ],
   "codecov": [
     "y",
