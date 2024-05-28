@@ -33,12 +33,12 @@ RUN adduser --system noroot
 # To configure version and revision, you can use:
 # docker build --label org.opencontainers.image.version=<your version> -t ...
 # Doc: https://docs.docker.com/engine/reference/commandline/run/#label
-LABEL   "org.opencontainers.image.title"="{{cookiecutter.__project_slug}}" \
+LABEL   "org.opencontainers.image.title"="{{cookiecutter.project_name |  slugify}}" \
     "org.opencontainers.artifact.description"="{{cookiecutter.project_description}}." \
     "org.opencontainers.image.description"="{{cookiecutter.project_description}}." \
-    "org.opencontainers.image.source"="https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.__project_slug}}" \
-    "org.opencontainers.image.url"="https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.__project_slug}}" \
-    "org.opencontainers.image.documentation"="https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.__project_slug}}" \
+    "org.opencontainers.image.source"="https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name |  slugify}}" \
+    "org.opencontainers.image.url"="https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name |  slugify}}" \
+    "org.opencontainers.image.documentation"="https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name |  slugify}}" \
     "org.opencontainers.image.licenses"="{{cookiecutter.open_source_license}}" \
     "org.opencontainers.image.vendor"="{{cookiecutter.author}}" \
     "org.opencontainers.image.authors"="{{cookiecutter.author}}" \

@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: {{cookiecutter.__project_slug}}-ci
+name: {{cookiecutter.project_name |  slugify}}-ci
 
 trigger:
   event:

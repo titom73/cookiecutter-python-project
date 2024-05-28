@@ -5,7 +5,7 @@
   "git_server": "git.as73.inetsix.net",
   "project_name": "python-example-lib",
   "__project_slug": "{{cookiecutter.project_name|lower|replace(' ', '-')}}",
-  "pkg_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "package_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_description": "This is a template repository for Python projects that use Poetry for their dependency management.",
   "version": "0.1.0",
   "include_github_actions": [

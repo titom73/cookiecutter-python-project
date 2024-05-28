@@ -1,8 +1,8 @@
-"""{{cookiecutter.__project_slug}} Library."""
+"""{{cookiecutter.project_name |  slugify}} Library."""
 
 import importlib.metadata
 
-__version__ = f"v{importlib.metadata.version('{{cookiecutter.pkg_name}}')}"
+__version__ = f"v{importlib.metadata.version('{{cookiecutter.package_name}}')}"
 __credits__ = [
     "{{cookiecutter.author}} <{{cookiecutter.email}}>",
 ]

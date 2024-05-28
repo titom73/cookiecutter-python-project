@@ -36,7 +36,7 @@ This project uses following inputs to build content:
 - `author_github_handle`: Git Nickname,
 - `git_server`: Git server,
 - `project_name`: Project's name (similar to repository name),
-- `pkg_name`: default is `{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}`,
+- `package_name`: default is `{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}`,
 - `project_description`: Project description,
 - `version`: Initial version of the project,
 - `include_github_actions`: Activate or not GH Actions,

@@ -3,7 +3,7 @@ requires = ["setuptools>=64.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "{{cookiecutter.__project_slug}}"
+name = "{{cookiecutter.project_name |  slugify}}"
 version = "{{cookiecutter.version}}"
 readme = "README.md"
 authors = [{ name = "{{cookiecutter.author}}", email = "{{cookiecutter.email}}" }]
@@ -82,12 +82,12 @@ doc = [
 ]
 
 [project.urls]
-Homepage = "https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.__project_slug}}"
-"Bug Tracker" = "https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.__project_slug}}/issues"
-Contributing = "https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.__project_slug}}/CONTRIBUTING.md"
+Homepage = "https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name |  slugify}}"
+"Bug Tracker" = "https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name |  slugify}}/issues"
+Contributing = "https://{{cookiecutter.git_server}}/{{cookiecutter.author_github_handle}}/{{cookiecutter.project_name |  slugify}}/CONTRIBUTING.md"
 
 #[project.scripts]
-#{{cookiecutter.pkg_name}} = "{{cookiecutter.pkg_name}}.cli:cli"
+#{{cookiecutter.package_name}} = "{{cookiecutter.package_name}}.cli:cli"
 
 
 ################################
@@ -95,7 +95,7 @@ Contributing = "https://{{cookiecutter.git_server}}/{{cookiecutter.author_github
 ################################
 
 [tool.setuptools.packages.find]
-include = ["{{cookiecutter.pkg_name}}*"]
+include = ["{{cookiecutter.package_name}}*"]
 namespaces = false
 
 
@@ -156,7 +156,7 @@ exclude = [
 
 line-length = 165
 
-# Assume Python 3.9 as this is the lowest supported version for {{cookiecutter.pkg_name}}
+# Assume Python 3.9 as this is the lowest supported version for {{cookiecutter.package_name}}
 target-version = "py39"
 
 [tool.ruff.lint]
@@ -201,7 +201,7 @@ max-complexity = 10
 
 [tool.ruff.lint.flake8-type-checking]
 # These classes require that type annotations be available at runtime
-runtime-evaluated-base-classes = ["pydantic.BaseModel", "{{cookiecutter.pkg_name}}.models.{{cookiecutter.pkg_name}}Test.Input"]
+runtime-evaluated-base-classes = ["pydantic.BaseModel", "{{cookiecutter.package_name}}.models.{{cookiecutter.package_name}}Test.Input"]
 
 
 [tool.ruff.lint.per-file-ignores]
@@ -218,10 +218,10 @@ runtime-evaluated-base-classes = ["pydantic.BaseModel", "{{cookiecutter.pkg_name
   "S106",    # Passwords are indeed hardcoded in tests
   "S108",    # Probable insecure usage of temporary file or directory
 ]
-"tests/units/{{cookiecutter.pkg_name}}_tests/test_interfaces.py" = [
+"tests/units/{{cookiecutter.package_name}}_tests/test_interfaces.py" = [
   "S104",  # False positive for 0.0.0.0 bindings in test inputs
 ]
-"{{cookiecutter.pkg_name}}/*" = [
+"{{cookiecutter.package_name}}/*" = [
   "BLE001",  # Do not catch blind exception: `Exception` - caught by other linter
   "TRY400",  # Use `logging.exception` instead of `logging.error` - we know what we are doing
 ]
@@ -297,7 +297,7 @@ warn_untyped_fields = true
 ################################
 
 [tool.pytest.ini_options]
-# When run from {{cookiecutter.pkg_name}} directory this will read cov-config from pyproject.toml
+# When run from {{cookiecutter.package_name}} directory this will read cov-config from pyproject.toml
 addopts = "-ra -q -vv --cov --cov-report term:skip-covered --color yes"
 log_level = "WARNING"
 render_collapsed = true
@@ -314,7 +314,7 @@ filterwarnings = [
 
 [tool.coverage.run]
 branch = true
-source = ["{{cookiecutter.pkg_name}}"]
+source = ["{{cookiecutter.package_name}}"]
 parallel = true
 
 [tool.coverage.report]
@@ -386,15 +386,15 @@ commands =
 [testenv:lint]
 description = Check the code style
 commands =
-  ruff check --config pyproject.toml {{cookiecutter.pkg_name}} tests
-  ruff format --config pyproject.toml --check {{cookiecutter.pkg_name}} tests
-  pylint {{cookiecutter.pkg_name}}
+  ruff check --config pyproject.toml {{cookiecutter.package_name}} tests
+  ruff format --config pyproject.toml --check {{cookiecutter.package_name}} tests
+  pylint {{cookiecutter.package_name}}
   pylint tests
 
 [testenv:type]
 description = Check typing
 commands =
-  mypy --config-file=pyproject.toml {{cookiecutter.pkg_name}}
+  mypy --config-file=pyproject.toml {{cookiecutter.package_name}}
   mypy --config-file=pyproject.toml tests
 
 [testenv:clean]

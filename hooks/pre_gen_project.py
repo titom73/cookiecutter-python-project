@@ -12,7 +12,7 @@
 #     sys.exit(1)
 
 # PROJECT_SLUG_REGEX = r"^[_a-zA-Z][_a-zA-Z0-9]+$"
-# project_slug = "{{cookiecutter.__project_slug}}"
+# project_slug = "{{cookiecutter.project_name |  slugify}}"
 # if not re.match(PROJECT_SLUG_REGEX, project_slug):
 #     print(
 #         "ERROR: The project slug (%s) is not a valid Python module name. Please do not use a - and use _ instead"

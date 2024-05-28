@@ -1,6 +1,6 @@
-"""{{cookiecutter.pkg_name}} Tests."""
+"""{{cookiecutter.package_name}} Tests."""
 
-from {{cookiecutter.pkg_name}} import print_demo
+from {{cookiecutter.package_name}} import print_demo
 
 
 def test_demo() -> None:

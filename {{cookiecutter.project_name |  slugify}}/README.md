@@ -6,18 +6,18 @@
 
 ## Quickstart
 
-{{cookiecutter.__project_slug}} is available on PyPI and can be installed with `pip`.
+{{cookiecutter.project_name |  slugify}} is available on PyPI and can be installed with `pip`.
 
 ```bash
-pip install {{cookiecutter.pkg_name}}
+pip install {{cookiecutter.package_name}}
 ```
 
-After installing {{cookiecutter.__project_slug}} you can use it like any other Python module.
+After installing {{cookiecutter.project_name |  slugify}} you can use it like any other Python module.
 
 Here is a simple example:
 
 ```python
-import {{cookiecutter.pkg_name}}
+import {{cookiecutter.package_name}}
 # Fill this section in with the common use-case.
 ```
 
