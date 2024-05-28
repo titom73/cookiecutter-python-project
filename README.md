@@ -35,7 +35,7 @@ This project uses following inputs to build content:
 - `email`: Author Email address,
 - `author_github_handle`: Git Nickname,
 - `git_server`: Git server,
-- `project_name`: Project's name (similar to repository name),
+- `project_name`: Project's name (similar to repository name), it will be used to derive a slug,
 - `package_name`: default is `{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}`,
 - `project_description`: Project description,
 - `version`: Initial version of the project,
@@ -50,7 +50,6 @@ This project uses following inputs to build content:
 
 Some variables are automatically built by cookicutter:
 
-- `__project_slug`: `{{cookiecutter.project_name|lower|replace('-', '_')}}`,
 - `__year`: `{% now 'utc', '%Y' %}`,
 
 ## Contribution guide
