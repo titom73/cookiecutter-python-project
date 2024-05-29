@@ -1,3 +1,6 @@
+##############################################
+# RUN CI on PR / PUSH EVENT
+##############################################
 kind: pipeline
 type: docker
 name: {{cookiecutter.project_name |  slugify}}-ci
@@ -32,3 +35,72 @@ steps:
     commands:
       - pip install tox
       - tox -e py311
+
+---
+##############################################
+# Publish docker image to registry for latest
+##############################################
+
+# DOCKER_INTERNAL_USERNAME: docker username, e.e: my-user
+# DOCKER_INTERNAL_PASSWORD: docker password, e.g: password123 or token
+# DOCKER_INTERNAL_REPO: docker repository. e.g: git.as73.inetsix.net/tom/python-helpers
+# DOCKER_INTERNAL_REGISTRY: docker registry, e.g: git.as73.inetsix.net
+
+# Deactivate below to activate pipeline
+# kind: pipeline
+# type: docker
+# name: {{cookiecutter.project_name |  slugify}}-ci-docker-latest
+
+# trigger:
+#   event:
+#     - push
+#   ref:
+#     include:
+#     - refs/heads/main
+
+# steps:
+# - name: build-docker
+#   image: plugins/docker
+#   settings:
+#     auto_tag: true
+#     username:
+#       from_secret: DOCKER_INTERNAL_USERNAME
+#     password:
+#       from_secret: DOCKER_INTERNAL_PASSWORD
+#     repo:
+#       from_secret: DOCKER_INTERNAL_REPO
+#     registry:
+#       from_secret: DOCKER_INTERNAL_REGISTRY
+
+---
+##############################################
+# RELEASE MANAGEMENT on TAG EVENT
+##############################################
+
+# DOCKER_INTERNAL_USERNAME: docker username, e.e: my-user
+# DOCKER_INTERNAL_PASSWORD: docker password, e.g: password123 or token
+# DOCKER_INTERNAL_REPO: docker repository. e.g: git.as73.inetsix.net/tom/python-helpers
+# DOCKER_INTERNAL_REGISTRY: docker registry, e.g: git.as73.inetsix.net
+
+# Deactivate below to activate pipeline
+# kind: pipeline
+# type: docker
+# name: {{cookiecutter.project_name |  slugify}}-ci-publish-tag
+
+# trigger:
+#   event:
+#     - tag
+
+# steps:
+# - name: build-docker
+#   image: plugins/docker
+#   settings:
+#     auto_tag: true
+#     username:
+#       from_secret: DOCKER_INTERNAL_USERNAME
+#     password:
+#       from_secret: DOCKER_INTERNAL_PASSWORD
+#     repo:
+#       from_secret: DOCKER_INTERNAL_REPO
+#     registry:
+#       from_secret: DOCKER_INTERNAL_REGISTRY
