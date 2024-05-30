@@ -6,7 +6,7 @@ __version__ = f"v{importlib.metadata.version('{{cookiecutter.package_name}}')}"
 __credits__ = [
     "{{cookiecutter.author}} <{{cookiecutter.email}}>",
 ]
-__copyright__ = "Copyright 2022-{{cookiecutter._year}}."
+__copyright__ = "Copyright 2022-{% now 'utc', '%Y' %}."
 
 
 def print_demo(v: str) -> str:

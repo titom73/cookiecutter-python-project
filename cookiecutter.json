@@ -36,7 +36,6 @@
     "GNU General Public License v3",
     "Not open source"
   ],
-  "_year": "{% now 'utc', '%Y' %}",
   "_copy_without_render": [
     ".github/workflows/pull-request-rn-labeler.yml",
     ".github/workflows/on-release-main.yml",

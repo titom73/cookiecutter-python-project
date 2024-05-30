@@ -18,7 +18,7 @@ Git repository to easily generate structure for a Python 3 project with the foll
 
 ```bash
 # Install cookiecutter (if not already installed)
-pipx install cookiecutter
+pipx install cookiecutter jinja2-time
 
 # Create your project (custom git server)
 cookiecutter git@git.as73.inetsix.net:tom/cookiecutter-python-project.git
