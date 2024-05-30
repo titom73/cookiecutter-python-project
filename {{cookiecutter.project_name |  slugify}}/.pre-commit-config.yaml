@@ -1,9 +1,19 @@
 ---
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
+
 files: ^({{cookiecutter.package_name}}|tests)/
 
 repos:
+  # Enforce conventional commit messages
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: <git sha or tag>
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: []
+
+  # Sanity checks for committed files
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
@@ -14,34 +24,37 @@ repos:
         exclude: tests/data/.*$
       - id: check-merge-conflict
 
-  # - repo: https://github.com/Lucas-C/pre-commit-hooks
-  #   rev: v1.5.4
-  #   hooks:
-  #     - name: Check and insert license on Python files
-  #       id: insert-license
-  #       # exclude:
-  #       files: .*\.py$
-  #       args:
-  #         - --license-filepath
-  #         - .github/license-short.txt
-  #         - --use-current-year
-  #         - --allow-past-years
-  #         - --fuzzy-match-generates-todo
-  #         - --no-extra-eol
+  # Insert license on Python files
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.4
+    hooks:
+      - name: Check and insert license on Python files
+        id: insert-license
+        # exclude:
+        files: .*\.py$
+        args:
+          - --license-filepath
+          - .github/license-short.txt
+          - --use-current-year
+          - --allow-past-years
+          - --fuzzy-match-generates-todo
+          - --no-extra-eol
 
-  #     - name: Check and insert license on Markdown files
-  #       id: insert-license
-  #       files: .*\.md$
-  #       # exclude:
-  #       args:
-  #         - --license-filepath
-  #         - .github/license-short.txt
-  #         - --use-current-year
-  #         - --allow-past-years
-  #         - --fuzzy-match-generates-todo
-  #         - --comment-style
-  #         - '<!--|  ~|  -->'
+  # Insert license on Markdown files
+      - name: Check and insert license on Markdown files
+        id: insert-license
+        files: .*\.md$
+        # exclude:
+        args:
+          - --license-filepath
+          - .github/license-short.txt
+          - --use-current-year
+          - --allow-past-years
+          - --fuzzy-match-generates-todo
+          - --comment-style
+          - '<!--|  ~|  -->'
 
+  # Ruff validation for python
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.4.2
     hooks:
@@ -51,6 +64,7 @@ repos:
     - id: ruff-format
       name: Run Ruff formatter
 
+  # Pylint code style checker
   - repo: local  # as per https://pylint.pycqa.org/en/latest/user_guide/installation/pre-commit-integration.html
     hooks:
       - id: pylint
@@ -64,6 +78,7 @@ repos:
           - -sn                      # Don't display the score
           - --rcfile=pyproject.toml  # Link to config file
 
+  # Codespell spell checker
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.6
     hooks:
@@ -73,6 +88,7 @@ repos:
         language: python
         types: [text]
 
+  # Mypy static type checker
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.10.0
     hooks:
