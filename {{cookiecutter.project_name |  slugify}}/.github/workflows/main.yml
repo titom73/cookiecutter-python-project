@@ -1,5 +1,5 @@
 ---
-name: Linting and Testing {{cookiecutter.package_name}}
+name: Linting and Testing {{cookiecutter.project_name | slugify}}
 
 on:
   push:
